@@ -36,16 +36,7 @@
 			Maptiles_A.addTo(myMap).setOpacity(0.5);
 			
 			//fetching the data 
-			let treeData;//creating an empty container for treeData
 			
-			fetch("./treesdata_wgs84.geojson")
-				.then(response => {
-				return response.json();
-			})
-			.then(data => {
-				return treeData = data;
-				})
-			.then(data => treeLayer.addData(data));
 			
 			let treeLayer = L.geoJSON(null,
 									{onEachFeature:
@@ -53,7 +44,7 @@
 										layer.bindPopup("placeholder text blah blah blah")
 										},
 									
-									pointToLayer: function(feature, latling) {
+									pointToLayer: function(feature, latlng) {
 										let iconOptions = {
 										iconUrl: "treeicon.png",
 										iconSize: [32, 32],
@@ -66,7 +57,18 @@
 									}
 									});
 			treeLayer.addTo(myMap);
+			
 			//fetching the data
+			let treeData;
+			
+			fetch("./treesdata_wgs84.geojson")
+				.then(response => {
+				return response.json();
+			})
+			.then(data => {
+				return treeData = data;
+				})
+			.then(data => treeLayer.addData(data));
 			</script>
 	</body>
 </html>
