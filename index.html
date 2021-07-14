@@ -15,7 +15,7 @@
 			crossorigin="">
 		</script>
 		
-		<link rel="stylesheet" href="style.css"/>
+		<link rel="stylesheet" href="styles.css"/>
 	</head>
 	
 	<body>
@@ -33,15 +33,35 @@
 				attribution: '&copy; <a herf="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 			});
 			
-			var OpenStreetMap_Mapnik = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-			maxZoom: 19,
-			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-			});
+			Maptiles_A.addto(myMap).setOpacity(0.5);
 			
-			//Maptiles_A.addTo(myMap).setOpacity(0.5);
-			OpenStreetMap_Mapnik.addTo(myMap);
+			//fetching the data 
+			let treeData;//creating an empty container for treeData
 			
+			fetch("./WebMap.Geojson")
+				.then(response => {
+				return response.json();
+			})
+			.then(data => {
+				return treeData = data;
+				})
+			.then(data => treeLayer.addData(data));
+			
+			let treeLayer = L.geoJson(null,
+									(onEachFeature:
+										function (feature, layer) {
+										layer.bindPopup("placeholder text blah blah blah")
+										},
+									
+									pointToLayer: function(feature, latling) {
+										//wdwdw
+									return L.marker(latling)
+									},
+									
+									}
+									);
+			treeLayer.addTo(myMap);
+			//fetching the data
 			</script>
 	</body>
 </html>
-
