@@ -54,12 +54,17 @@
 										},
 									
 									pointToLayer: function(feature, latling) {
-										//wdwdw
-									return L.marker(latling)
-									},
+										let iconOptions = {
+										iconUrl: "treeicon.png",
+										iconSize: [32, 32],
+										iconAnchor: [16, 16],
+										popupAnchor: [0, -8]
+									};
+									let treeIcon = L.icon(iconOptions);
 									
+									return L.marker(latlng, {icon: treeIcon)
 									}
-									);
+									});
 			treeLayer.addTo(myMap);
 			//fetching the data
 			</script>
