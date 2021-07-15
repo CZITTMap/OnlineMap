@@ -86,6 +86,13 @@
 			};
 			sidebar.addPanel(panelConent);
 			
+			sidebar.addPanel({
+				id: 'ghlink',
+				tab: '<img class ="sidebar-tab-icon" src="./logos/github_logo.png">',
+				button: 'https://github.com/aashritamohess/OnlineMapTraining',
+				position: "bottom"
+			});
+			
 			//close on mapclick behaviour
 			myMap.on("click", function() {sidebar.close()});
 			
