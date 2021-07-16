@@ -1,2 +1,2 @@
 # OnlineMapTraining
-https://aashritamohess.github.io/OnlineMapTraining/
+https://czittmap.github.io/OnlineMap/
