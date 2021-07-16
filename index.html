@@ -46,7 +46,7 @@
 			
 			let treeLayer = L.geoJSON(null,
 									{onEachFeature:
-										function (feature, layer) {
+										function (f, layer) {
 										//layer.bindPopup("placeholder text blah blah blah")
 										layer.bindPopup(`
 										<div class="tree-type"> ${f.NUMBER}: ${f.TYPE}</div>
