@@ -48,8 +48,16 @@
 									{onEachFeature:
 										function (feature, layer) {
 										//layer.bindPopup("placeholder text blah blah blah")
-										layer.bindPopup
-										},
+										layer.bindPopup('
+										<div class="tree-type">#${f.NUMBER}: ${f.TYPE}</div>
+										<div class="timestamp">${f.PHOTO_TIMESTAMP}</div>
+										<img class="photo" src="treeicon.png" alt="Photo of Tree">
+										<div class="offset">Est.Offset: ${f.CARBONOFF_EST}</div>
+										<div class="beneficiary">Beneficiary: ${f.BENEFICIARY}</div>
+										<div class="planter">Planter: ${f.PLANTER}</div>
+										<div class="risk-level">Risk: ${f.RISKLEVEL},/div>
+										`)
+									},
 									
 									pointToLayer: function(feature, latlng) {
 										let iconOptions = {
