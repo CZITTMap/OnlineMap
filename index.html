@@ -49,12 +49,12 @@
 										function (feature, layer) {
 										//layer.bindPopup("placeholder text blah blah blah")
 										layer.bindPopup(`
-										<div class="tree-type"> ${feature.NUMBER}: ${feature.TYPE}</div>
-										<div class="timestamp">${feature.PHOTO_TIMESTAMP}</div>
+										<div class="tree-type"> ${feature.NUMBER}: ${feature.TREE TYPE}</div>
+										<div class="timestamp">${feature.PHOTO DATE}</div>
 										<img class="photo" src="treeicon.png" alt="Photo of Tree">
-										<div class="offset">Est.Offset: ${feature.CARBONOFF_EST}</div>
-										<div class="beneficiary">Beneficiary: ${feature.BENEFICIARY}</div>
-										<div class="planter">Planter: ${feature.PLANTER}</div>
+										<div class="offset">Est.Offset: ${feature.ESTIMATED}</div>
+										<div class="beneficiary">Beneficiary: ${feature.ORGANISATI}</div>
+										<div class="planter">Planter: ${feature.INDIVIDUAL}</div>
 										<div class="risk-level">Risk: ${feature.RISKLEVEL}</div>
 										`)
 									},
