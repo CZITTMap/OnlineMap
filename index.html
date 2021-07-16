@@ -49,7 +49,7 @@
 										function (feature, layer) {
 										//layer.bindPopup("placeholder text blah blah blah")
 										layer.bindPopup(`
-										<div class="tree-type">#${f.NUMBER}: ${f.TYPE}</div>
+										<div class="tree-type"> ${f.NUMBER}: ${f.TYPE}</div>
 										<div class="timestamp">${f.PHOTO_TIMESTAMP}</div>
 										<img class="photo" src="treeicon.png" alt="Photo of Tree">
 										<div class="offset">Est.Offset: ${f.CARBONOFF_EST}</div>
@@ -107,7 +107,7 @@
 			//fetching the data
 			let treeData;
 			
-			fetch("./treesdata_wgs84.geojson")
+			fetch("./treesdata_CC.geojson")
 				.then(response => {
 				return response.json();
 			})
