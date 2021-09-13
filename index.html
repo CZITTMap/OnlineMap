@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<!-- BRANDON SERRAO, CONTRIBUTING TO INTERNSHIP FOR CONSULTANTS NEXT DOOR & CARBON ZERO INSTITUTE OF TRINIDAD AND TOBAGO -->
 <html>
   <head>
     <title>CZITT Carbon Register Map (DEMO)</title>
@@ -39,6 +39,17 @@
       let mapOptions = {
         center: [10.69, -61.1],
         zoom: 9,
+        inertia: true,
+        zoomControl: false,
+        zoomDelta: 1,
+        minZoom: 2,
+        maxBounds: [
+          [80, -180],
+          [-80, 180],
+        ],
+        noWrap: true,
+        markerZoomAnimation: true,
+        maxBoundsViscosity: 0.1,
       };
       const myMap = L.map("mapid", mapOptions);
       const Maptiles_A = L.tileLayer(
@@ -60,7 +71,7 @@
           let watermark = L.DomUtil.create("div");
 
           watermark.innerHTML = `<img alt="czitt's logo" src="logos/CZITT_LOGO.png">
-      														<div>CZITT CORE (c) Carbon Zero Institute of Trinidad and Tobago 2021</div>`;
+        														<div>CZITT CORE &copy; Carbon Zero Institute of Trinidad and Tobago 2021</div>`;
           watermark.id = "watermark";
           watermark.style.class = "leaflet-control-attribution";
 
@@ -107,24 +118,24 @@
         f = feature.properties;
         //layer.bindPopup(`Tree Type:<i>${feature.properties.type}<i>`)
         layer.bindPopup(`
-      						<div class="tree-type">#${f.NUMBER}: ${f.TYPE}</div>
-      						<div class="timestamp">${f.PHOTO_TIMESTAMP}</div>
-      						<img id="tree${f.NUMBER}" class="photo" src="./photos/${f.NUMBER}.jpg" alt="Photo of tree">
-      						<div class="offset">Est.Offset: ${f.CARBONOFF_EST}</div>
-      						<div class="planter">Planter: ${f.PLANTER}</div>
-							<div class="beneficiary">Beneficiary: ${f.BENEFICIARY}</div>
-      						`);
+        						<div class="tree-type">#${f.NUMBER}: ${f.TYPE}</div>
+        						<div class="timestamp">${f.PHOTO_TIMESTAMP}</div>
+        						<img id="tree${f.NUMBER}" class="photo" src="./photos/${f.NUMBER}.jpg" alt="Photo of tree">
+        						<div class="offset">Est.Offset: ${f.CARBONOFF_EST}</div>
+        						<div class="planter">Planter: ${f.PLANTER}</div>
+                    <div class="beneficiary">Beneficiary: ${f.BENEFICIARY}</div>
+        						`);
 
         //TODO add better logic for this
         /*
-        //adding listener to customize the displayed image when the popup is opened
-        layer.getPopup().on("add", function (event) {
-          console.log(event);
-          console.log(`changing source image to: tree${f.NUMBER}`);
-          L.DomUtil.get(`tree${f.NUMBER}`).src = `./photos/${f.NUMBER}.jpg`;
-        });
-        //also need to add one to remove it
-        */
+          //adding listener to customize the displayed image when the popup is opened
+          layer.getPopup().on("add", function (event) {
+            console.log(event);
+            console.log(`changing source image to: tree${f.NUMBER}`);
+            L.DomUtil.get(`tree${f.NUMBER}`).src = `./photos/${f.NUMBER}.jpg`;
+          });
+          //also need to add one to remove it
+          */
       }
       function treeToLayer(feature, latlng) {
         let marker = L.marker(latlng, {
@@ -157,19 +168,38 @@
         .addTo(myMap);
 
       //TODO fix closebutton icon
-      let info = `<h1>Tree Catalog - The Carbon Zero Institute of Trinidad and Tobago</h1>
-      <h2>Purpose:</h2>
-      <p>Trinidad and Tobago is one of the largest emitters of greenhouse gases per capita, in the world. To meet the goals of The Paris Agreement, Article 2, CZITT is developing a Carbon Offset Register (CORE). This involves the recording of major carbon offsetting initiatives and tracking of the country’s progress to carbon neutrality. One of these initiatives is through a partnership with the For the Exchange Farmers Association, to demonstrate the viability of agricultural produce intermixed with carbon sequestration in trees. This interactive map shows the trees planted by organizations, their locations as well as their potential to sequester carbon.</p>
-      <h2>Contributors:</h2>
-      <p><a href="https://www.linkedin.com/in/ryan-seemungal-gis-design/" target="_blank" style="color: black;" class="contributor-name">Ryan Seemungal</a>, <span class="contributor-title">Data Visualization Specialist</span></p>
-      <p><a href="https://www.linkedin.com/in/brandon-serrao/" target="_blank" style="color: black;" class="contributor-name">Brandon Serrao</a>, <span class="contributor-title">Cartography & Web Mapping Instructor</span></p>
-      <p><a href="https://www.linkedin.com/in/sweelanrenaud/" target="_blank" style="color: black;" class="contributor-name">Sweelan Renaud</a>, <span class="contributor-title">Program Assistant at Advisors Next Door</span></p>
-      <p><a href="https://www.linkedin.com/in/aashritamohess/" target="_blank" style="color: black;" class="contributor-name">Aashrita Mohess</a>, <span class="contributor-title">Intern at Advisors Next Door</span></p>
-      <h4> Contact:</h4>
-      <p> Contact us at <a href="mailto:advisorsnextdoor@gmail.com"target="_blank">advisorsnextdoor@gmail.com</a> for more information</p>
-      <p>Visit <a href= "https://czitt-ed.org/"target="_blank">Caribbean E-Learning by the Carbon Zero Institute of Trinidad and Tobago</a> to learn more about this project and how you can get involved</p>
-      <p> Date Last Updated: 16th July 2021</p>
-      `; //preferred position, but sidebar size adjustment makes the svg scale undesirably<div id="chartdiv"></div>
+      let info = `<h1>Carbon Offset Register - The Carbon Zero Institute of Trinidad and Tobago</h1>
+        <h2>Purpose:</h2>
+        <p>Carbon Zero or Carbon Neutral is a state in which we minimise our carbon emissions and "offset" the balance by storing or sequestering carbon equal to the amount we produce from our activities. Trinidad and Tobago is one of the world's largest emitters of greenhouse gases per capita. To meet the goals of The Paris Agreement, the country must reduce and offset a large amount of carbon emissions. 
+		CZITT is developing a Carbon Offset Register ("CORE"). This involves the recording of major carbon offsetting initiatives as part of tracking of the country’s progress to carbon neutrality.</p>
+		<p>This interactive map shows the trees and other carbon "sinks" as well as their potential to sequester carbon. </p> 
+		<p>Contact us to map your trees and other carbon sinks.</p>
+
+        <!--<p> Carbon emissions from fossil fuels, the inustrial sector and land use is the largest source of global Greenhouse Gas (GHG) emissions.
+        We must act now and do our part to combat the exacerbated effects of climate change.
+        The CZITT 1000 trees challenge initiative partners with schools, clubs and corporations to plant and record trees which are then geotagged.
+        Our goal is to establish a carbon offset registry in which its efforts are driven towards reducing carbon emissions via carbon sequestration as a proven climate change mitigation strategy.</p>-->
+		
+		<h4> Contact:</h4>
+        <p> Contact us at <a href="mailto:admin@czitt.com"target="_blank">admin@czitt.com </a> for more information</p>
+
+        <p>Visit <a href="https://czitt.com"target="_blank">Carbon Zero Institute of Trinidad and Tobago</a> to learn more about this project and how you can get involved</p>
+        
+        <h2>Contributors:</h2>
+        <p><a href="https://www.linkedin.com/in/ryan-seemungal-gis-design/" target="_blank" style="color: black;" class="contributor-name">Ryan Seemungal</a>, <span class="contributor-title">Data Visualization Specialist</span></p>
+        <p><a href="https://www.linkedin.com/in/brandon-serrao/" target="_blank" style="color: black;" class="contributor-name">Brandon Serrao</a>, <span class="contributor-title">Cartography & Web Mapping Instructor</span></p>
+        <p><a href="https://www.linkedin.com/in/sweelanrenaud/" target="_blank" style="color: black;" class="contributor-name">Sweelan Renaud</a>, <span class="contributor-title">Program Assistant at Advisors Next Door</span></p>
+        <p><a href="https://www.linkedin.com/in/aashritamohess/" target="_blank" style="color: black;" class="contributor-name">Aashrita Mohess</a>, <span class="contributor-title">Intern at Advisors Next Door</span></p>
+       
+	   <!--<h4> Contact:</h4>
+        <p> Contact us at <a href="mailto:advisorsnextdoor@gmail.com"target="_blank">advisorsnextdoor@gmail.com</a> for more information</p>
+
+        <p>Visit <a href= "https://czitt-ed.org/"target="_blank">Caribbean E-Learning by the Carbon Zero Institute of Trinidad and Tobago</a> to learn more about this project and how you can get involved</p>
+        <p> Date Last Updated: 23rd July 2021</p>-->
+        <p>This map was created as part of a Capstone Stone Project done with Advisors Next Door.</p>
+		<p> Date Last Updated: 13th September 2021</p>
+
+        `; //preferred position, but sidebar size adjustment makes the svg scale undesirably<div id="chartdiv"></div>
       let panelContent = {
         id: "info",
         tab: '<img class ="sidebar-tab-icon" src="./logos/logo_color.png">', //TODO get better icon
@@ -183,7 +213,7 @@
       sidebar.addPanel({
         id: "ghlink",
         tab: '<img class ="sidebar-tab-icon" src="./logos/github_logo.png">', //TODO get better icon
-        button: "https://czittmap.github.io/OnlineMap/",
+        button: "https://github.com/CZITTMap/OnlineMap",
         position: "bottom",
       });
 
@@ -246,6 +276,8 @@
             .layers(null, beneficiaries)
             .setPosition("topright")
             .addTo(myMap); //adds toggle control to map
+			pane: '<h2>Projected Sequestration Rates in 20 Years</h2>
+			<img src= "20Years.png">
 
           //adding searchbar to sidebar
           sidebar.addPanel({
@@ -253,15 +285,15 @@
             tab: '<img class="sidebar-tab-icon" src="icons/magglass_blue.png">', //placeholder
             title: "Searchbar",
             pane: `<h2>Beneficiary Organizations</h2>
-      				<p>Left-click: (Work in Progress) Toggle choice on map. Right-click/Longpress to highlight the choice on map.</p>
-      								<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
-      								<!--<button id="clearButton" onclick="clearSelections()">Clear Selection</button>-->
-      								<ul id="myUL">
-      								<!--commenting the placeholders out
-      									<li><a href="#">test2</a></li>
-      									<li><a href="#">test 1</a></li>
-      									-->
-      								</ul>`, //
+        				<p>Left-click: (Work in Progress) Toggle choice on map. Right-click/Longpress to highlight the choice on map.</p>
+        								<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+        								<!--<button id="clearButton" onclick="clearSelections()">Clear Selection</button>-->
+        								<ul id="myUL">
+        								<!--commenting the placeholders out
+        									<li><a href="#">test2</a></li>
+        									<li><a href="#">test 1</a></li>
+        									-->
+        								</ul>`, //
             position: "top",
           });
 
@@ -394,4 +426,3 @@
     </script>
   </body>
 </html>
-
