@@ -276,8 +276,18 @@
             .layers(null, beneficiaries)
             .setPosition("topright")
             .addTo(myMap); //adds toggle control to map
-			pane:'<h2>Projected Sequestration Rates in 20 Years</h2>',
-			'<img src="20Years.png">'
+			
+			
+			
+		 //adding searchbar to sidebar
+          sidebar.addPanel({
+            id: "Chart",
+            tab: '<img class="sidebar-tab-icon" src="PieChart.png">', //placeholder
+            title: "Pie Chart",
+            pane: `<h2>Projected Sequestration Rates in 20 Years</h2>
+				'<img src="20Years.png">',
+			position: "top",
+			});
 
           //adding searchbar to sidebar
           sidebar.addPanel({
